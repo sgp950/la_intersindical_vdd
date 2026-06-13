@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Script para generar noticias y documentos a partir de PDFs.
-Uso:
-  python generar.py "titulo.pdf" --fecha 2024-01-15 --slug mi-noticia
-  python generar.py --documento "Guia Laboral.pdf" --tipo guias
+Script per generar notícies i documents a partir de PDFs.
+Ús:
+  python generar.py "titol.pdf" --data 2024-01-15 --slug mi-noticia
+  python generar.py --document "Guia Laboral.pdf" --tipus guies
 """
 
 import argparse
@@ -16,18 +16,18 @@ from pathlib import Path
 try:
     import pdfplumber
 except ImportError:
-    print("Error: pdfplumber no está instalado. Ejecuta: pip install pdfplumber")
+    print("Error: pdfplumber no està instal·lat. Executa: pip install pdfplumber")
     exit(1)
 
 try:
     from bs4 import BeautifulSoup
 except ImportError:
-    print("Error: beautifulsoup4 no está instalado. Ejecuta: pip install beautifulsoup4")
+    print("Error: beautifulsoup4 no està instal·lat. Executa: pip install beautifulsoup4")
     exit(1)
 
 
 def extract_text_from_pdf(pdf_path):
-    """Extrae texto de un archivo PDF."""
+    """Extreu text d'un fitxer PDF."""
     text = ""
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
@@ -37,24 +37,24 @@ def extract_text_from_pdf(pdf_path):
 
 
 def extract_images_from_pdf(pdf_path, output_dir):
-    """Extrae imágenes de un archivo PDF."""
+    """Extreu imatges d'un fitxer PDF."""
     images = []
     os.makedirs(output_dir, exist_ok=True)
-    
+
     with pdfplumber.open(pdf_path) as pdf:
         for page_num, page in enumerate(pdf.pages):
             for img_num, img in enumerate(page.images):
-                # Las imágenes en pdfplumber son diccionarios con información de posición
-                # Para extraer imágenes reales, necesitaríamos usar otra librería
+                # Les imatges en pdfplumber són diccionaris amb informació de posició
+                # Per extreure imatges reals, necessitaríem usar una altra llibreria
                 pass
-    
+
     return images
 
 
 def create_article_html(title, date, content, images, output_path):
-    """Crea la página HTML del artículo."""
+    """Crea la pàgina HTML de l'article."""
     html_template = f"""<!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,10 +100,10 @@ def create_article_html(title, date, content, images, output_path):
       </a>
       <button class="menu-toggle" aria-label="Menú">☰</button>
       <ul class="nav-links">
-        <li><a href="../../index.html">Inicio</a></li>
-        <li><a href="../../noticias.html">Noticias</a></li>
-        <li><a href="../../documentos.html">Documentos</a></li>
-        <li><a href="../../contacto.html">Contacto</a></li>
+        <li><a href="../../index.html">Inici</a></li>
+        <li><a href="../../noticias.html">Notícies</a></li>
+        <li><a href="../../documentos.html">Documents</a></li>
+        <li><a href="../../contacto.html">Contacte</a></li>
       </ul>
     </nav>
   </header>
@@ -113,13 +113,13 @@ def create_article_html(title, date, content, images, output_path):
       <div class="container">
         <h1>{title}</h1>
         <div class="article-meta">
-          <span>{format_date_es(date)}</span>
+          <span>{format_date_ca(date)}</span>
         </div>
       </div>
     </div>
 
     <article class="article-content">
-      <a href="../../noticias.html" class="back-link">← Volver a noticias</a>
+      <a href="../../noticias.html" class="back-link">← Tornar a les Notícies</a>
       {content}
     </article>
   </main>
@@ -127,7 +127,7 @@ def create_article_html(title, date, content, images, output_path):
   <footer>
     <div class="container">
       <div class="footer-bottom">
-        <p>&copy; 2026 La Intersindical VDD. Todos los derechos reservados.</p>
+        <p>&copy; 2026 La Intersindical VDD. Tots els drets reservats.</p>
       </div>
     </div>
   </footer>
@@ -140,25 +140,25 @@ def create_article_html(title, date, content, images, output_path):
         f.write(html_template)
 
 
-def format_date_es(date_string):
-    """Formatea una fecha en español."""
+def format_date_ca(date_string):
+    """Formata una data en català."""
     months = {
-        1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril',
-        5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto',
-        9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre'
+        1: 'gener', 2: 'febrer', 3: 'març', 4: 'abril',
+        5: 'maig', 6: 'juny', 7: 'juliol', 8: 'agost',
+        9: 'setembre', 10: 'octubre', 11: 'novembre', 12: 'desembre'
     }
     date = datetime.strptime(date_string, '%Y-%m-%d')
     return f"{date.day} de {months[date.month]} de {date.year}"
 
 
 def text_to_html(text):
-    """Convierte texto plano a HTML con párrafos."""
+    """Converteix text pla a HTML amb paràgrafs."""
     paragraphs = text.split('\n\n')
     html = ''
     for p in paragraphs:
         p = p.strip()
         if p:
-            # Detectar si es un título (línea corta sin punto final)
+            # Detectar si és un títol (línia curta sense punt final)
             if len(p) < 100 and not p.endswith('.'):
                 html += f'<h2>{p}</h2>\n'
             else:
@@ -167,64 +167,64 @@ def text_to_html(text):
 
 
 def update_news_json(news_data, news_json_path):
-    """Actualiza el archivo noticias.json."""
+    """Actualitza el fitxer noticias.json."""
     if os.path.exists(news_json_path):
         with open(news_json_path, 'r', encoding='utf-8') as f:
             existing = json.load(f)
     else:
         existing = []
-    
-    # Verificar si ya existe la noticia
+
+    # Verificar si ja existeix la notícia
     existing_slugs = [n['slug'] for n in existing]
     if news_data['slug'] in existing_slugs:
-        # Actualizar existente
+        # Actualitzar existent
         for i, n in enumerate(existing):
             if n['slug'] == news_data['slug']:
                 existing[i] = news_data
                 break
     else:
-        # Añadir nueva
+        # Afegir nova
         existing.append(news_data)
-    
-    # Ordenar por fecha (más reciente primero)
+
+    # Ordenar per data (més recent primer)
     existing.sort(key=lambda x: x['date'], reverse=True)
-    
+
     with open(news_json_path, 'w', encoding='utf-8') as f:
         json.dump(existing, f, ensure_ascii=False, indent=2)
 
 
 def generate_news(pdf_path, date, slug):
-    """Genera una noticia a partir de un PDF."""
+    """Genera una notícia a partir d'un PDF."""
     pdf_path = Path(pdf_path)
     if not pdf_path.exists():
-        print(f"Error: No se encontró el archivo {pdf_path}")
+        print(f"Error: No s'ha trobat el fitxer {pdf_path}")
         return
-    
-    # Extraer texto
+
+    # Extreure text
     text = extract_text_from_pdf(pdf_path)
     if not text:
-        print("Error: No se pudo extraer texto del PDF")
+        print("Error: No s'ha pogut extreure text del PDF")
         return
-    
-    # Usar nombre del archivo como título si no se especifica
+
+    # Usar nom del fitxer com a títol si no s'especifica
     title = pdf_path.stem.replace('-', ' ').replace('_', ' ').title()
-    
-    # Convertir texto a HTML
+
+    # Convertir text a HTML
     content = text_to_html(text)
-    
-    # Crear directorio de la noticia
+
+    # Crear directori de la notícia
     news_dir = Path('noticias') / slug
     news_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Crear imagen placeholder
+
+    # Crear imatge placeholder
     img_dir = news_dir / 'img'
     img_dir.mkdir(exist_ok=True)
-    
-    # Crear HTML del artículo
+
+    # Crear HTML de l'article
     article_path = news_dir / 'index.html'
     create_article_html(title, date, content, [], article_path)
-    
-    # Actualizar noticias.json
+
+    # Actualitzar noticias.json
     news_data = {
         'slug': slug,
         'title': title,
@@ -234,69 +234,69 @@ def generate_news(pdf_path, date, slug):
         'content': content
     }
     update_news_json(news_data, Path('noticias') / 'noticias.json')
-    
-    print(f"Noticia generada: {article_path}")
-    print(f"JSON actualizado: noticias/noticias.json")
+
+    print(f"Notícia generada: {article_path}")
+    print(f"JSON actualitzat: noticias/noticias.json")
 
 
 def add_document(pdf_path, doc_type):
-    """Añade un documento a la lista."""
+    """Afegeix un document a la llista."""
     pdf_path = Path(pdf_path)
     if not pdf_path.exists():
-        print(f"Error: No se encontró el archivo {pdf_path}")
+        print(f"Error: No s'ha trobat el fitxer {pdf_path}")
         return
-    
-    # Copiar PDF a directorio de documentos
+
+    # Copiar PDF al directori de documents
     docs_dir = Path('documentos') / doc_type
     docs_dir.mkdir(parents=True, exist_ok=True)
-    
+
     import shutil
     dest = docs_dir / pdf_path.name
     shutil.copy2(pdf_path, dest)
-    
-    # Actualizar documentos.json
+
+    # Actualitzar documentos.json
     docs_json = Path('documentos') / 'documentos.json'
     if docs_json.exists():
         with open(docs_json, 'r', encoding='utf-8') as f:
             existing = json.load(f)
     else:
         existing = []
-    
+
     doc_data = {
         'title': pdf_path.stem.replace('-', ' ').replace('_', ' ').title(),
-        'description': f'Documento de tipo {doc_type}',
+        'description': f'Document de tipus {doc_type}',
         'date': datetime.now().strftime('%Y-%m-%d'),
         'file': f'{doc_type}/{pdf_path.name}',
         'tipo': doc_type
     }
-    
+
     existing.append(doc_data)
-    
+
     with open(docs_json, 'w', encoding='utf-8') as f:
         json.dump(existing, f, ensure_ascii=False, indent=2)
-    
-    print(f"Documento añadido: {dest}")
-    print(f"JSON actualizado: documentos/documentos.json")
+
+    print(f"Document afegit: {dest}")
+    print(f"JSON actualitzat: documentos/documentos.json")
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Generar noticias y documentos desde PDFs')
-    parser.add_argument('pdf', nargs='?', help='Archivo PDF a procesar')
-    parser.add_argument('--fecha', help='Fecha de la noticia (YYYY-MM-DD)')
-    parser.add_argument('--slug', help='Slug para la URL de la noticia')
-    parser.add_argument('--documento', help='PDF a añadir como documento')
-    parser.add_argument('--tipo', default='general', help='Tipo de documento')
+    parser = argparse.ArgumentParser(description='Generar notícies i documents des de PDFs')
+    parser.add_argument('pdf', nargs='?', help='Fitxer PDF a processar')
+    parser.add_argument('--data', help='Data de la notícia (YYYY-MM-DD)')
+    parser.add_argument('--slug', help='Slug per a la URL de la notícia')
+    parser.add_argument('--document', help='PDF a afegir com a document')
+    parser.add_argument('--tipus', default='general', help='Tipus de document')
     
     args = parser.parse_args()
-    
-    if args.documento:
-        add_document(args.documento, args.tipo)
+
+    if args.document:
+        add_document(args.document, args.tipus)
     elif args.pdf:
-        if not args.fecha:
-            args.fecha = datetime.now().strftime('%Y-%m-%d')
+        if not args.data:
+            args.data = datetime.now().strftime('%Y-%m-%d')
         if not args.slug:
             args.slug = Path(args.pdf).stem.lower().replace(' ', '-').replace('_', '-')
-        generate_news(args.pdf, args.fecha, args.slug)
+        generate_news(args.pdf, args.data, args.slug)
     else:
         parser.print_help()
 

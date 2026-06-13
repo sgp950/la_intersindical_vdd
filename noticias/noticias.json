@@ -1,10 +1,10 @@
 [
   {
-    "slug": "ejemplo-noticia",
-    "title": "Ejemplo de Noticia Sindical",
+    "slug": "exemple-noticia",
+    "title": "Exemple de Notícia Sindical",
     "date": "2026-06-13",
-    "excerpt": "Esta es una noticia de ejemplo para demostrar el funcionamiento del sistema de noticias.",
+    "excerpt": "Això és un exemple de notícia per demostrar el funcionament del sistema de notícies.",
     "image": "img/placeholder.jpg",
-    "content": "<p>Contenido completo de la noticia de ejemplo.</p>"
+    "content": "<p>Contingut complet de la notícia d'exemple.</p>"
   }
 ]

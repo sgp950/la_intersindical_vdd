@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentos - La Intersindical VDD</title>
+  <title>Documents - La Intersindical VDD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -56,10 +56,10 @@
       </a>
       <button class="menu-toggle" aria-label="Menú">☰</button>
       <ul class="nav-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="documentos.html">Documentos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index.html">Inici</a></li>
+        <li><a href="noticias.html">Notícies</a></li>
+        <li><a href="documentos.html">Documents</a></li>
+        <li><a href="contacto.html">Contacte</a></li>
       </ul>
     </nav>
   </header>
@@ -67,10 +67,10 @@
   <main style="padding-top: 80px;">
     <section class="section">
       <div class="container">
-        <h1>Documentos</h1>
-        <p>Descarga nuestros documentos oficiales, convenios y guías laborales.</p>
+        <h1>Documents</h1>
+        <p>Descarrega els nostres documents oficials, convenis i guies laborals.</p>
         <ul id="document-list" class="document-list">
-          <!-- Se carga dinámicamente -->
+          <!-- Es carrega dinàmicament -->
         </ul>
       </div>
     </section>
@@ -81,26 +81,26 @@
       <div class="footer-grid">
         <div class="footer-column">
           <h3>La Intersindical VDD</h3>
-          <p>Sindicato dedicado a la defensa de los derechos laborales y sociales.</p>
+          <p>Sindicat dedicat a la defensa dels drets laborals i socials.</p>
         </div>
         <div class="footer-column">
-          <h3>Navegación</h3>
+          <h3>Navegació</h3>
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="noticias.html">Noticias</a></li>
-            <li><a href="documentos.html">Documentos</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="index.html">Inici</a></li>
+            <li><a href="noticias.html">Notícies</a></li>
+            <li><a href="documentos.html">Documents</a></li>
+            <li><a href="contacto.html">Contacte</a></li>
           </ul>
         </div>
         <div class="footer-column">
-          <h3>Contacto</h3>
+          <h3>Contacte</h3>
           <ul>
             <li>Email: info@intersindicalvdd.org</li>
             <li>Tel: 93 123 45 67</li>
           </ul>
         </div>
         <div class="footer-column">
-          <h3>Síguenos</h3>
+          <h3>Seguiu-nos</h3>
           <div class="social-links">
             <a href="#" aria-label="Facebook">FB</a>
             <a href="#" aria-label="Twitter">TW</a>
@@ -109,7 +109,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 La Intersindical VDD. Todos los derechos reservados.</p>
+        <p>&copy; 2026 La Intersindical VDD. Tots els drets reservats.</p>
       </div>
     </div>
   </footer>
@@ -127,16 +127,16 @@
               <h3>${doc.title}</h3>
               <p>${doc.description} - ${formatDate(doc.date)}</p>
             </div>
-            <a href="documentos/${doc.file}" class="btn-download" download>Descargar</a>
+            <a href="documentos/${doc.file}" class="btn-download" download>Descarregar</a>
           </li>
         `).join('');
       } catch (error) {
-        documentList.innerHTML = '<p>No hay documentos disponibles.</p>';
+        documentList.innerHTML = '<p>No hi ha documents disponibles.</p>';
       }
 
       function formatDate(dateString) {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return new Date(dateString).toLocaleDateString('es-ES', options);
+        return new Date(dateString).toLocaleDateString('ca-ES', options);
       }
     });
   </script>

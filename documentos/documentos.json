@@ -1,9 +1,9 @@
 [
   {
-    "title": "Convenio Colectivo Ejemplo",
-    "description": "Convenio colectivo de ejemplo para demostración",
+    "title": "Conveni Col·lectiu Exemple",
+    "description": "Conveni col·lectiu d'exemple per a demostració",
     "date": "2026-01-15",
-    "file": "convenio-ejemplo.pdf",
-    "tipo": "convenios"
+    "file": "conveni-exemple.pdf",
+    "tipo": "convenis"
   }
 ]

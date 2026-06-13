@@ -1,12 +1,12 @@
 // La Intersindical VDD - JavaScript
 
-// Navigation
+// Navegació
 document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('header');
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
 
-  // Header scroll effect
+  // Efecte de scroll de l'encapçalament
   window.addEventListener('scroll', function() {
     if (window.scrollY > 100) {
       header.classList.add('scrolled');
@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Mobile menu toggle
+  // Alternar menú mòbil
   if (menuToggle) {
     menuToggle.addEventListener('click', function() {
       navLinks.classList.toggle('active');
     });
   }
 
-  // Load latest news on index page
+  // Carregar les últimes notícies a la pàgina d'inici
   const latestNewsContainer = document.getElementById('latest-news');
   if (latestNewsContainer) {
     loadLatestNews(latestNewsContainer);
   }
 
-  // Load all news on noticias page
+  // Carregar totes les notícies a la pàgina de notícies
   const allNewsContainer = document.getElementById('all-news');
   if (allNewsContainer) {
     loadAllNews(allNewsContainer);
@@ -42,8 +42,8 @@ async function loadLatestNews(container) {
     const latest = news.slice(0, 3);
     renderNewsCards(container, latest);
   } catch (error) {
-    console.error('Error loading news:', error);
-    container.innerHTML = '<p>No hay noticias disponibles.</p>';
+    console.error('Error carregant notícies:', error);
+    container.innerHTML = '<p>No hi ha notícies disponibles.</p>';
   }
 }
 
@@ -53,8 +53,8 @@ async function loadAllNews(container) {
     const news = await response.json();
     renderNewsCards(container, news);
   } catch (error) {
-    console.error('Error loading news:', error);
-    container.innerHTML = '<p>No hay noticias disponibles.</p>';
+    console.error('Error carregant notícies:', error);
+    container.innerHTML = '<p>No hi ha notícies disponibles.</p>';
   }
 }
 
@@ -66,7 +66,7 @@ function renderNewsCards(container, news) {
         <span class="news-card-date">${formatDate(item.date)}</span>
         <h3 class="news-card-title">${item.title}</h3>
         <p class="news-card-excerpt">${item.excerpt}</p>
-        <a href="noticias/${item.slug}/index.html" class="read-more">Leer más →</a>
+        <a href="noticias/${item.slug}/index.html" class="read-more">Llegir més →</a>
       </div>
     </article>
   `).join('');
@@ -74,5 +74,5 @@ function renderNewsCards(container, news) {
 
 function formatDate(dateString) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(dateString).toLocaleDateString('es-ES', options);
+  return new Date(dateString).toLocaleDateString('ca-ES', options);
 }
