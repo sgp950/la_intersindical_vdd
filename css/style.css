@@ -149,3 +149,80 @@ header.scrolled .menu-toggle {
     color: var(--text);
   }
 }
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--bg-light);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(10, 8, 8, 0.77), rgba(10, 8, 8, 0.77));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--bg-light);
+}
+
+.btn-primary:hover {
+  background: #c42d24;
+  color: var(--bg-light);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--bg-light);
+  border: 2px solid var(--bg-light);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-light);
+  color: var(--text);
+}
