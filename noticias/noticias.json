@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "ejemplo-noticia",
+    "title": "Ejemplo de Noticia Sindical",
+    "date": "2026-06-13",
+    "excerpt": "Esta es una noticia de ejemplo para demostrar el funcionamiento del sistema de noticias.",
+    "image": "img/placeholder.jpg",
+    "content": "<p>Contenido completo de la noticia de ejemplo.</p>"
+  }
+]
