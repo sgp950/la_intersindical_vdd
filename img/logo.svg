@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <rect width="400" height="120" fill="#1a1a1a"/>
+  <text x="20" y="55" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="white">INTER</text>
+  <text x="20" y="105" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="white">SINDICAL</text>
+  <g fill="#e5352c">
+    <rect x="280" y="10" width="12" height="50" transform="skewX(-20)"/>
+    <rect x="300" y="10" width="12" height="50" transform="skewX(-20)"/>
+    <rect x="320" y="10" width="12" height="50" transform="skewX(-20)"/>
+    <rect x="340" y="10" width="12" height="50" transform="skewX(-20)"/>
+  </g>
+</svg>
