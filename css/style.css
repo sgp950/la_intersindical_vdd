@@ -1,10 +1,10 @@
 :root {
   --primary: #e5352c;
   --secondary: #1a1a1a;
-  --bg-light: #ffffff;
-  --text: #333333;
-  --text-light: #666666;
-  --border: #e0e0e0;
+  --bg-light: #1a1a1a;
+  --text: #ffffff;
+  --text-light: #cccccc;
+  --border: #333333;
 }
 
 * {
@@ -56,7 +56,7 @@ a:hover {
 
 .section-dark {
   background-color: var(--secondary);
-  color: var(--bg-light);
+  color: #ffffff;
 }
 
 header {
@@ -82,7 +82,7 @@ nav {
 }
 
 .logo img {
-  height: 40px;
+  height: 160px;
 }
 
 .nav-links {
@@ -92,7 +92,7 @@ nav {
 }
 
 .nav-links a {
-  color: var(--bg-light);
+  color: var(--text);
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -159,7 +159,7 @@ header.scrolled .menu-toggle {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--bg-light);
+  color: #ffffff;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -208,23 +208,23 @@ header.scrolled .menu-toggle {
 
 .btn-primary {
   background: var(--primary);
-  color: var(--bg-light);
+  color: #ffffff;
 }
 
 .btn-primary:hover {
   background: #c42d24;
-  color: var(--bg-light);
+  color: #ffffff;
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--bg-light);
-  border: 2px solid var(--bg-light);
+  color: #ffffff;
+  border: 2px solid #ffffff;
 }
 
 .btn-secondary:hover {
-  background: var(--bg-light);
-  color: var(--text);
+  background: #ffffff;
+  color: #1a1a1a;
 }
 
 /* News Cards */
@@ -235,10 +235,10 @@ header.scrolled .menu-toggle {
 }
 
 .news-card {
-  background: var(--bg-light);
+  background: #2a2a2a;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -280,8 +280,8 @@ header.scrolled .menu-toggle {
 
 /* Footer */
 footer {
-  background: var(--secondary);
-  color: var(--bg-light);
+  background: #111111;
+  color: #ffffff;
   padding: 4rem 0 2rem;
 }
 
@@ -306,14 +306,14 @@ footer {
 }
 
 .footer-column a {
-  color: var(--bg-light);
+  color: #ffffff;
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
 
 .footer-column a:hover {
   opacity: 1;
-  color: var(--bg-light);
+  color: #ffffff;
 }
 
 .footer-bottom {
@@ -330,7 +330,7 @@ footer {
 }
 
 .social-links a {
-  color: var(--bg-light);
+  color: #ffffff;
   font-size: 1.25rem;
 }
 
